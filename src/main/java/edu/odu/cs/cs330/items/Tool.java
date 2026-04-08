@@ -74,7 +74,12 @@ public class Tool extends Equippable implements Item {
     {
         Tool cpy = new Tool();
 
-        // Refer to the previous assignment
+        cpy.setName(this.getName());
+        cpy.setMaterial(this.getMaterial());
+        cpy.setDurability(this.getDurability());
+        cpy.setModifier(this.getModifier());
+        cpy.setModifierLevel(this.getModifierLevel());
+        cpy.setSpeed(this.getSpeed());
 
         return cpy;
     }
@@ -88,14 +93,17 @@ public class Tool extends Equippable implements Item {
     @Override
     public boolean equals(Object rhs)
     {
-        if (!(rhs instanceof Tool)) {
-            return false;
+       if (!(rhs instanceof Tool)) {
+        return false;
         }
 
         Tool rhsItem = (Tool) rhs;
 
-        // Refer to the previous assignment
-        return false;
+        return this.getName().equals(rhsItem.getName())
+            && this.getMaterial().equals(rhsItem.getMaterial())
+            && this.getModifier().equals(rhsItem.getModifier())
+            && this.getModifierLevel() == rhsItem.getModifierLevel()
+            && this.getSpeed() == rhsItem.getSpeed();
     }
 
     /**
@@ -105,8 +113,13 @@ public class Tool extends Equippable implements Item {
     @Override
     public int hashCode()
     {
-        // Refer to the previous assignment
-        return -1;
+        return java.util.Objects.hash(
+        this.getName(),
+        this.getMaterial(),
+        this.getModifier(),
+        this.getModifierLevel(),
+        this.getSpeed()
+        );
     }
 
     /**
@@ -115,6 +128,14 @@ public class Tool extends Equippable implements Item {
     @Override
     public String toString()
     {
-        return "  Refer to the previous assignment...";
+        return String.format(
+        FMT_STR,
+        this.getName(),
+        this.getDurability(),
+        this.getSpeed(),
+        this.getMaterial(),
+        this.getModifier(),
+        this.getModifierLevel()
+        );
     }
 }

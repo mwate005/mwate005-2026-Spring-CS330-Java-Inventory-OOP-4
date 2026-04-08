@@ -29,7 +29,7 @@ public class ArmourCreation implements ItemCreationStrategy
     public int requiredNumberOfValues()
     {
         // What is the correct return value?
-        return -1;
+        return 7;
     }
 
     @SuppressWarnings({
@@ -39,9 +39,16 @@ public class ArmourCreation implements ItemCreationStrategy
     @Override
     public Item fromTokens(final String... tokens)
     {
+
         Armour armour = new Armour();
 
-        // Call the appropriate setters...
+        armour.setName(tokens[1]);
+        armour.setMaterial(tokens[2]);
+        armour.setDurability(Integer.parseInt(tokens[3]));
+        armour.setDefense(Integer.parseInt(tokens[4]));
+        armour.setModifier(tokens[5]);
+        armour.setModifierLevel(Integer.parseInt(tokens[6]));
+        armour.setElement(tokens[7]);
 
         return armour;
     }
@@ -49,7 +56,6 @@ public class ArmourCreation implements ItemCreationStrategy
     @Override
     public Item fromExisting(final Item original)
     {
-        // Maybe clone original...
-        return null;
+        return original.clone();
     }
 }
